@@ -1,0 +1,566 @@
+@media(max-width:1600px){
+    .dahboard-info-col{
+        gap: 30px;
+    }
+    .left-sidebar ul{
+        gap: 15px;
+    }
+    .dahboard-info-col .title h3{
+        font-size: 17px;
+    }
+    .events-stream-content .btns a{
+        font-size: 15px;
+        padding: 13px 15px;
+    }
+    .leader-board-wrap { 
+        padding: 16px 76px 16px 16px; 
+    }
+    .leader-board-content img.leader-board-tag { 
+        right: 12px;
+    }
+    .featured-challange-list .challlenges-list{
+        gap: 20px;
+    }
+    .challange-btn{
+        margin-top: 10px;
+    }
+    .best-stream-list{
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    .info-table tbody tr td,
+    .info-table thead tr th{
+        padding: 20px;
+    }
+    .info-table table{
+        table-layout: unset;
+    }
+    .stream-info .stream-content{
+        gap: 10px;
+    }
+    .stream-info .stream-content p{
+        font-size: 16px;
+        line-height: 1.4;
+    }
+}
+@media(max-width:1399px){
+    .banner .content-wrap {
+        padding: 300px 0 200px;
+    }
+    h1 {
+        font-size: 70px;
+        line-height: 1.5;
+    }
+    h2,.dashboard-landing h2 {
+        font-size: 40px;
+        line-height: 1.4;
+    }
+    p, li {
+        font-size: 16px;
+        line-height: 1.9;
+    }
+    .dahboard-info-col { 
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0 30px;
+    }
+    .challange-content{
+        padding: 20px;
+    }
+    .challange-content h3{
+        margin-bottom: 10px;
+    }
+    .right-dash-inner,.right-bottom-dash{
+        padding: 30px;
+    }
+    .leader-board-wrap {
+        padding: 15px ;
+        flex-wrap: wrap;
+    }
+    .leader-board-content img.leader-board-tag {
+        top: 10px;
+        transform: unset;
+    }
+    .leader-board-wrap .leader-board-content{
+        width: 100%;
+        padding-left: 0;
+        padding-top: 10px;
+    }
+    .info-table thead tr th,.info-table tbody tr td{
+        padding: 15px 20px;
+    }
+    .info-table .stream-info.align-items-center p{
+        font-size: 15px;
+    }
+    .profile-card figure{
+        width: 80px;
+        margin: 0;
+    }
+    .profile-card-content h3{
+        margin-bottom: 5px;
+    }
+    .account-wrapper .media-login .media-link{
+        padding: 14px;
+    }
+    .account-wrapper .authentication-form-box{
+        padding: 20px;
+    }
+    .account-wrapper .login-layout .login-form{
+        width: 60%  !important;
+    }
+    .login-form-right.w-50{
+        width: 40%  !important;
+    }
+    .profile-setup .right-dash-inner .heading h3,.dash-banner-2 h2{
+        font-size: 40px;
+        line-height: 1.2;
+    }
+    .featured-challange-list .challlenges-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .dash-banner-2{
+        gap:10px;
+    }
+    .stream-info .stream-content p{
+        font-size: 15px;
+    }
+    .stream-info-listing .stream-info .stream-content h3 {
+        font-size: 16px;
+        line-height: 1.4;
+    }
+    .stream-info .stream-content h3{
+        font-size: 22px;
+    }
+}
+@media(max-width:1199px){
+    h1 {
+        font-size: 60px; 
+    }
+    h2 ,.dashboard-landing h2{
+        font-size: 35px; 
+    }
+    p, li ,.dashboard-landing p{
+        font-size: 15px; 
+        line-height: 1.9;
+    }
+    section{
+        padding: 100px 0;
+    }
+    .logo {
+        width: 120px;
+        height: 120px;
+    }
+    .ac-btn-transparent, .ac-btn-blue{
+        padding: 18px 30px;
+        font-size: 16px;
+    }
+    .banner .content-wrap {
+        padding: 250px 0 180px;
+    }
+    .about-content {
+        gap: 16px;
+    }
+    .dahboard-info-col {
+        grid-template-columns: repeat(1, 1fr); 
+    }
+    .challlenges-list { 
+        gap: 25px;
+        grid-template-columns: repeat(2, 1fr); 
+    }
+    .right-dash-inner .title{
+        margin-bottom: 10px;
+    }
+    ul.nav.nav-tabs{
+        padding: 10px;
+    }
+    .challange-banner{
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    .right-player-content {
+        width: 250px;
+        padding: 20px;
+    }
+    .right-player-content h3{
+        margin-bottom: 15px;
+    }
+    .left-sidebar {
+        width: 275px; 
+    }
+    .right-dash {
+        width: calc(100% - 275px);
+    }
+    .info-table table{
+        table-layout: auto;
+    }
+    .info-table {
+        overflow: auto;
+    }
+    .leader-board-wrap{
+        margin-top: 25px;
+    }
+    .profile-info h4,
+    .profile-card-content h3{
+        font-size: 20px;
+    }
+    .profile-setup .right-dash-inner .heading h3{
+        font-size: 35px; 
+    }
+    .featured-challange-list .challlenges-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media(max-width:991px){
+    h1 {
+        font-size: 50px; 
+    }
+    h2 ,.dashboard-landing h2{
+        font-size: 32px; 
+    }
+    section{
+        padding: 80px 0;
+    }
+    .challange-list { 
+        gap: 30px ;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .social-icons{
+        margin-bottom: 30px;
+    }
+    .left-sidebar {
+        width: 100px;
+        padding-inline: 18px;
+    }
+    .left-sidebar ul a span{
+        display: none;
+    }
+    .left-sidebar h5{
+        text-align: center;
+    }
+    .left-sidebar .logo {
+        width: 69px; 
+    }
+    .right-dash {
+        width: calc(100% - 100px);
+    }
+    .right-bottom-dash{
+        padding: 30px;
+    }
+    .right-dash-inner .title{
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .dash-banner-2 h2{
+        font-size: 30px;
+    }
+    .featured-challange h3, .best-stream h3{
+        font-size: 18px;
+    }
+    .best-stream-wrapper p{
+        font-size: 15px;
+    }
+    .player{
+        aspect-ratio: 782/430;
+        height: auto;
+    }
+    .player_button{
+        margin-right: 5px;
+    }
+}
+@media(max-width:767px){
+    h1 {
+        font-size: 40px; 
+    }
+    h2,.dashboard-landing h2 {
+        font-size: 25px; 
+    }
+    h3{
+        font-size: 18px;
+    }
+    section{
+        padding: 70px 0;
+    }
+    .banner .content-wrap {
+        padding: 200px 0 150px;
+    }
+    .about figure{
+        margin-bottom: 30px;
+    }
+    .challange-content{
+        padding: 20px;
+    }
+    .challange-content h3{
+        margin-bottom: 15px;
+    }
+    .challlenges-list { 
+        grid-template-columns: repeat(1, 1fr);
+    } 
+    ul.nav.nav-tabs a{
+        padding: 13px;
+    }
+    ul.nav.nav-tabs{
+        padding: 8px;
+    }
+    .search-field input{
+        padding: 12px 17px;
+    }
+    .right-player-content {
+        width: 100%;
+        margin: 0 0 15px;
+    }
+    .challange-banner{
+        margin-bottom: 0;
+    }
+    .challange-banner-img{
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    .form-wrapper form input:not([type="submit"]), .form-wrapper form select, .form-wrapper form textarea {
+        padding: 15px;
+        font-size: 14px;
+    }
+    .form-wrapper form label{
+        font-size: 16px;
+    }
+    .profile-info.w-40 ul.social-links{
+        gap: 18px;
+    }
+    .profile-info.w-40{
+        width: 50%;
+    }
+    .login-form-right.w-50{
+        display: none;
+    }
+    .account-wrapper .login-layout .login-form{
+        width: 100% !important;
+    }
+    .account-wrapper .media-login .media-link p{
+        font-size: 14px;
+    }
+    .featured-challange-list .challlenges-list {
+        grid-template-columns: repeat(1, 1fr);
+    }
+} 
+@media(max-width:575px){
+    .header-btn {
+        gap: 10px;
+    }
+    .logo {
+        width: 100px;
+        height: 100px;
+        border-radius: 0 0 10px 10px;
+    } 
+    .ac-btn-transparent, .ac-btn-blue {
+        padding: 14px 25px;
+        font-size: 15px;
+        border-radius: 6px;
+    }
+    .challange-list { 
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .card-body{
+        padding-inline: 15px;
+    }
+    div#accordion a.btn{
+        padding-left: 15px;
+        font-size: 16px;
+    }
+    .form-fields .field-wrap {
+        width: 100%;
+    }
+    a.footer-logo {
+        margin: 0 auto;
+        display: block;
+        width: 130px;
+        margin-bottom: 10px;
+    }
+    footer p{
+        text-align: center;
+    }
+    .left-sidebar {
+        width: 64px;
+        padding-inline: 10px;
+    }
+    .left-sidebar ul a{
+        padding: 10px;
+        justify-content: center;
+    }
+    .right-dash {
+        width: calc(100% - 64px);
+    }
+    .top-bar{
+        padding: 10px;
+        justify-content: flex-end;
+    }
+    .right-info{
+        gap: 10px;
+    }
+    .top-bar > p{
+        display: none;
+    }
+    .right-bottom-dash,.right-dash-inner,.dash-content,.featured-challange, .best-stream{
+        padding: 15px 10px;
+    }
+    .dashboard-landing {
+        padding: 20px;
+        border-radius: 12px;
+    }
+    .challange-wrapper,
+    .challange-wrapper figure{
+        border-radius: 12px;
+    }
+    .events-stream-wrap {
+        flex-direction: column;
+    }
+    .events-stream-wrap figure{
+        width: 100%;
+        height: 200px;
+    }
+    .events-stream-content{
+        width: 100%;
+    }
+    .dahboard-info-col > div,.challange-content{
+        padding: 15px;
+    }
+    .profile-setup label.ac-btn-blue-border,
+    .form-wrapper form input.ac-btn-blue,.form-wrapper form .ac-btn-blue.invert-btn,
+    .events-stream-content .btns a ,.btn-wrap a,.challange-banner a.ac-btn-blue-border,span.btn{
+        font-size: 14px;
+        padding: 12px 12px;
+        min-width: unset;
+    }
+    span.btn{
+        min-width: unset;
+    }
+    .dahboard-info-col .title a{
+        white-space: nowrap;
+    }
+    .user-info img{
+        width: 30px;
+        height: 30px;
+    }
+    .challange-banner{
+        padding-inline: 15px;
+    }
+    .challange-banner-img figure{
+        width: 100px;
+    }
+    .challange-banner-text p{
+        font-size: 16px;
+    }
+    .challange-banner-text h3{
+        font-size: 17px;
+    }
+    .challange-banner-text h4{
+        font-size: 20px;
+    }
+    .challange-banner-text{
+        gap: 8px;
+    }
+    .dash-content h3 ~ h3{
+        margin-top: 20px;
+    }
+    .dash-content p{
+        margin-top: 10px;
+    }
+    .form-wrapper form.change-password > div{
+        width: 100%;
+    }
+    .form-wrapper form.change-password{
+        gap: 15px;
+    }
+    .form-wrapper form label{
+        font-size: 15px;
+        margin-bottom: 5px;
+    }
+    span.drop-zone__prompt{
+        font-size: 15px;
+    }
+    span.drop-zone__prompt span{
+        font-size: 14px;
+    }
+    .profile-info.w-40{
+        width: 100%;
+    }
+    .profile-card{
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+    .account-wrapper .media-login{
+        flex-direction: column;
+        gap: 0;
+    }
+    .account-wrapper .media-login .media-link{
+        width: 100%;
+    }
+    .account-wrapper .login-layout .login-form{
+        padding: 15px;
+    }
+    .account-wrapper .login-form .title{
+        font-size: 25px;
+    }
+    .profile-setup .file-upload{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .profile-setup .right-dash-inner .heading h3{
+        font-size: 30px;
+        padding: 10px 0;
+    }
+    .featured-challange h3, .best-stream h3{
+        font-size: 16px;
+    }
+    .dash-banner-2{
+        padding: 20px;
+    }
+    .stream-info{
+        flex-direction: column;
+    }
+    .stream-info figure{
+        margin: 0;
+    }
+    .stream-block{
+        padding: 15px;
+    }
+    .info-table thead tr th, .info-table tbody tr td {
+        padding: 10px ;
+    }
+    .info-table .stream-info{
+        text-align: center;
+    }
+    .info-table .stream-info.align-items-center p{
+        text-align: center;
+    }
+    .player .progress-range{
+        height: 6px;
+    }
+    .player_controls{
+        padding-inline: 10px;
+    }
+    .player_button, .player_button i{
+        font-size: 10px;
+    }
+    input[type="range"]{
+        margin-inline: 5px;
+    }
+    .player{
+        border-radius: 12px;
+    }
+    .player,.stream-block{
+        margin-bottom: 20px;
+    }
+    .time-elapsed, .fa-fast-forward{
+        padding-left: 2px;
+    }
+    .time{
+        font-size: 15px;
+    }
+    .info-table span.position{
+        width: 35px;
+        height: 35px;
+        line-height: 35px;
+        font-size: 15px;
+    }
+    .info-table .stream-info{
+        gap: 5px;
+    }
+}
