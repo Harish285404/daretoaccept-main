@@ -51,7 +51,7 @@ class ChallengeController extends Controller
                 'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240', 
                 'video' => 'nullable|mimes:mp4,mov|max:102400',
                 ]);
-                $imageName = null;`
+                $imageName = null;
 
                 if ($request->hasFile('photo')) {
                     if ($challenge->photo) {

@@ -1,5 +1,6 @@
 @extends('layouts.dashboard')
 
+
 @section('content')
 <div class="right-bottom-dash">
     <div class="dahboard-main" style="background-image: url({{ url('asset/image.png') }});">
