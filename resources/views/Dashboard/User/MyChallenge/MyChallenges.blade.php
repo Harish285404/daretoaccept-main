@@ -1,6 +1,11 @@
 @extends('layouts.dashboard')
 
 @section('content')
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 <div class="dash-wrapper">
     <div class="right-dash">
         <div class="right-bottom-dash">
@@ -8,11 +13,12 @@
                 <a href="{{ route('challenge.create') }}" class="ac-btn-blue">Create New Challenge</a>
 
                 @foreach ($challenges as $challenge)
-                    <div class="challange-banner" style="background-image: url({{ $challenge->photo_path ? Storage::url($challenge->photo_path) : url('asset/image.png') }});">
+                    <div class="challange-banner" style="background-image: url({{ $challenge->photo_path ? url('storage/challanges/images/' . $challenge->photo_path) : url('asset/image.png') }});">
                         <div class="challange-banner-img">
-                            <figure> 
-                                <img src="{{ $challenge->photo_path ? Storage::url($challenge->photo_path) : url('asset/image.png') }}" alt="Challenge Photo">
-                            </figure>
+                        <figure> 
+                        <img src="{{ $challenge->photo_path ? url('storage/challanges/images/' . $challenge->photo_path) : url('asset/image.png') }}" alt="Challenge Photo">
+                    </figure>
+
                             <div class="challange-banner-text">
                                 <h3>{{ $challenge->title }}</h3>
                                 <h4>${{ number_format((float)$challenge->amount, 2) }}</h4>
@@ -30,14 +36,14 @@
                     </div>
 
                     <div class="dash-content">
-                        <div class="right-player-content">
-                            <h3>Invite Players</h3>
-                            <form>
-                                <label>Invitation Link</label>
-                                <input type="text"  readonly>
-                                <input type="button"  value="Copy Link">
-                            </form>
-                        </div>
+                    <div class="right-player-content">
+                        <h3>Invite Players</h3>
+                        <form>
+                            <label>Invitation Link</label>
+                            <input type="text" value="{{ route('challange.detail', ['id' => encrypt($challenge->id)]) }}" readonly id="inviteLink{{ $challenge->id }}">
+                            <input type="button" value="Copy Link" onclick="copyLink({{ $challenge->id }})">
+                        </form>
+                    </div>
 
                         <h3>Challenge Description</h3>
                         <p>{{ $challenge->description }}</p>
@@ -63,6 +69,15 @@
         }, function() {
             alert('Failed to copy the link. Please try again.');
         });
+    }
+</script>
+
+<script>
+    function copyLink(challengeId) {
+        var copyText = document.getElementById('inviteLink' + challengeId);
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+        document.execCommand("copy");
     }
 </script>
 @endsection

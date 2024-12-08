@@ -12,53 +12,58 @@
         <div class="right-dash-inner">
             <div class="form-wrapper">
                 <h3>Create Challenge</h3>
-                <form class="change-password" method="POST" action="{{ route('challenge.store') }}" enctype="multipart/form-data">
+                <form class="change-password" method="POST" action="{{ route('challenge.store') }}" enctype="multipart/form-data" id="createchalange">
                     
                     @csrf
 
                     <div class="form-field w-100">
                         <label>Challenge Title</label>
-                        <input type="text" name="title" placeholder="Enter Challenge Title">
+                        <input type="text" name="title" placeholder="Enter Challenge Title" id="name">
                         @error('title')
                             <div class="error">{{ $message }}</div>
                         @enderror
+                        <div id="name-error" class="text-danger"></div>
                     </div>
 
                     <div class="form-field">
                         <label>Start Date</label>
-                        <input type="date" name="start_date" placeholder="Enter Start Date" >
+                        <input type="date" name="start_date" placeholder="Enter Start Date" id="startdate">
                         @error('start_date')
                             <div class="error">{{ $message }}</div>
                         @enderror
+                        <div id="startdate-error" class="text-danger"></div>
                     </div>
 
                     <div class="form-field">
                         <label>Start Time</label>
-                        <input type="time" name="start_time" placeholder="Enter Start Time" >
+                        <input type="time" name="start_time" placeholder="Enter Start Time" id="starttime">
                         @error('start_time')
                             <div class="error">{{ $message }}</div>
                         @enderror
+                        <div id="starttime-error" class="text-danger"></div>
                     </div>
 
                     <div class="form-field">
                         <label>Total Participants</label>
-                        <input type="number" name="total_participants" placeholder="Enter Participants">
+                        <input type="number" name="total_participants" min="1" placeholder="Enter Participants" id="participant">
                         @error('total_participants')
                             <div class="error">{{ $message }}</div>
                         @enderror
+                        <div id="participant-error" class="text-danger"></div>
                     </div>
 
                     <div class="form-field">
                         <label>Amount</label>
-                        <input type="text" name="amount" placeholder="Enter Amount">
+                        <input type="text" name="amount" placeholder="Enter Amount" id="amount">
                         @error('amount')
                             <div class="error">{{ $message }}</div>
                         @enderror
+                        <div id="amount-error" class="text-danger"></div>
                     </div>
 
                     <div class="form-field">
                     <label>Charity Select</label>
-                    <select name="charity_id">
+                    <select name="charity_id" id="charity">
                         <option value="">Select</option>
                         @foreach ($charities as $charity)
                             <option value="{{ $charity->id }}" >
@@ -69,51 +74,56 @@
                     @error('charity_id')
                         <div class="error">{{ $message }}</div>
                     @enderror
+                    <div id="charity-error" class="text-danger"></div>
                 </div>
 
 
                     <div class="form-field">
                         <label>Social Links</label>
-                        <input type="url" name="social_links" placeholder="Enter Social Links">
+                        <input type="text" name="social_links" placeholder="Enter Social Links" id="social">
                         @error('social_links')
                             <div class="error">{{ $message }}</div>
                         @enderror
+                        <div id="social-errors" class="text-danger"></div>
                     </div>
 
                     <div class="form-field w-100">
                         <label>Description</label>
-                        <textarea name="description" placeholder="Enter Description"></textarea>
+                        <textarea name="description" placeholder="Enter Description" id="description"></textarea>
                         @error('description')
                             <div class="error">{{ $message }}</div>
                         @enderror
+                        <div id="description-error" class="text-danger"></div>
                     </div>
 
                     <div class="form-field w-100">
                         <label>Rules & Regulations</label>
-                        <textarea name="rules" placeholder="Enter Rules & Regulations"></textarea>
+                        <textarea name="rules" placeholder="Enter Rules & Regulations" id="rule"></textarea>
                         @error('rules')
                             <div class="error">{{ $message }}</div>
                         @enderror
+                        <div id="rule-error" class="text-danger"></div>
                     </div>
 
                     <div class="form-field w-100">
                         <label>Encouragement For User</label>
-                        <textarea name="encouragement" placeholder="Enter Encouragement"></textarea>
+                        <textarea name="encouragement" placeholder="Enter Encouragement" id="encourage"></textarea>
                         @error('encouragement')
                             <div class="error">{{ $message }}</div>
-                        @enderror
+                         @enderror
+                         <div id="encourage-error" class="text-danger"></div>
                     </div>
 
                     <div class="form-field w-100">
                         <label>Upload Photo</label>
-                        <div class="drop-zone">
+                        <div class="drop-zone" id="photoDropZone">
                             <img src="{{ url('asset/upload.png') }}" alt="">
                             <span class="drop-zone__prompt">
                                 Choose a file or drag & drop it here
                                 <span>PNG, JPG formats, up to 10MB</span>
                             </span>
-                            <span class="btn">Upload Files</span>
-                            <input type="file" name="photo" class="drop-zone__input">
+                            <span class="btn" id="photoUploadBtn">Upload Files</span>
+                            <input type="file" name="photo" class="drop-zone__input" id="photo">
                         </div>
                         @error('photo')
                             <div class="error">{{ $message }}</div>
@@ -122,14 +132,14 @@
 
                     <div class="form-field w-100">
                         <label>Upload Video</label>
-                        <div class="drop-zone">
+                        <div class="drop-zone" id="videoDropZone">
                             <img src="{{ url('asset/upload.png') }}" alt="">
                             <span class="drop-zone__prompt">
                                 Choose a file or drag & drop it here
                                 <span>PNG, JPG formats, up to 10MB</span>
                             </span>
-                            <span class="btn">Upload Files</span>
-                            <input type="file" name="video" class="drop-zone__input">
+                            <span class="btn" id="videoUploadBtn">Upload Files</span>
+                            <input type="file" name="videos" class="drop-zone__input" id="videos">
                         </div>
                         @error('video')
                             <div class="error">{{ $message }}</div>
@@ -150,81 +160,145 @@
 
 @endsection
 @section('lv_footer')
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
+    $(document).ready(function() {
+   
+    $('#photoUploadBtn').on('click', function() {
+        $('#photo').click();
+    });
+
+    $('#videoUploadBtn').on('click', function() {
+        $('#videos').click();
+    });
 
 
+});
+</script>
 
-document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
-    alert('sdfds')
-    const dropZoneElement = inputElement.closest(".drop-zone");
 
-    dropZoneElement.addEventListener("click", (e) => {
-      inputElement.click();
+<!-- Include jQuery library -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // Handle form submission
+        $('#createchalange').submit(function(e) {
+            e.preventDefault();  // Prevent form from submitting until validation is passed
+
+            // Clear previous error messages
+            $('.error').text('');
+            $('.form-field input, .form-field select, .form-field textarea').removeClass('is-invalid');
+
+            let isValid = true;
+
+            // Validate Challenge Title
+            const title = $('#name').val();
+            if (title.trim() === '') {
+                $('#name-error').text('Challenge Title is required');
+                $('#name').addClass('is-invalid');
+                isValid = false;
+            }
+
+            // Validate Start Date
+            const startDate = $('#startdate').val();
+            if (startDate === '') {
+                $('#startdate-error').text('Start Date is required');
+                $('#startdate').addClass('is-invalid');
+                isValid = false;
+            }
+
+            // Validate Start Time
+            const startTime = $('#starttime').val();
+            if (startTime === '') {
+                $('#starttime-error').text('Start Time is required');
+                $('#starttime').addClass('is-invalid');
+                isValid = false;
+            }
+
+            // Validate Total Participants (ensure it's a positive number)
+            const totalParticipants = $('#participant').val();
+            if (totalParticipants <= 0) {
+                $('#participant-error').text('Please enter a valid number of participants');
+                $('#participant').addClass('is-invalid');
+                isValid = false;
+            }
+
+            // Validate Amount (ensure it's a number and greater than 0)
+            const amount = $('#amount').val();
+            if (amount.trim() === '' || isNaN(amount) || parseFloat(amount) <= 0) {
+                $('#amount-error').text('Please enter a valid amount');
+                $('#amount').addClass('is-invalid');
+                isValid = false;
+            }
+
+            // Validate Charity Select (ensure a value is selected)
+            const charity = $('#charity').val();
+            if (charity === '') {
+                $('#charity-error').text('Please select a charity');
+                $('#charity').addClass('is-invalid');
+                isValid = false;
+            }
+
+       
+        //  // Validate Social Links (ensure it's a valid URL)
+        //     const socialLinks = $('#socials').val();
+        //     if (socialLinks && !/^https?:\/\/[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*(?::\d+)?(?:\/[^\s]*)?$/.test(socialLinks)) {
+        //         $('#sociasl-error').text('Please enter a valid URL (e.g., http://example.com)');
+        //         $('#socials').addClass('is-invalid');
+        //         isValid = false;
+        //     }
+
+   
+            // Validate Social Links (ensure it's a valid URL)
+            const socialLinks = $('#social').val().trim();
+
+            // Check if social link is not empty
+            if (socialLinks === '') {
+                $('#social-errors').text('Social link is required');
+                $('#social').addClass('is-invalid');
+                isValid = false;
+            } else {
+                // Pattern for validating URL (http:// or https://)
+                const urlPattern = /^(https?:\/\/)?([a-z0-9-]+\.)+[a-z0-9]{2,6}(\/[^\s]*)?$/;
+
+                if (!urlPattern.test(socialLinks)) {
+                    $('#social-errors').text('Please enter a valid social link (e.g., http://example.com)');
+                    $('#social').addClass('is-invalid');
+                    isValid = false;
+                }
+            }
+
+            // Validate Description
+            const description = $('#description').val();
+            if (description.trim() === '') {
+                $('#description-error').text('Description is required');
+                $('#description').addClass('is-invalid');
+                isValid = false;
+            }
+
+            // Validate Rules & Regulations
+            const rules = $('#rule').val();
+            if (rules.trim() === '') {
+                $('#rule-error').text('Rules & Regulations are required');
+                $('#rule').addClass('is-invalid');
+                isValid = false;
+            }
+
+            // Validate Encouragement
+            const encouragement = $('#encourage').val();
+            if (encouragement.trim() === '') {
+                $('#encourage-error').text('Encouragement is required');
+                $('#encourage').addClass('is-invalid');
+                isValid = false;
+            }
+
+            // If all fields are valid, submit the form
+            if (isValid) {
+                this.submit();  // Submit the form
+            }
+        });
     });
-  
-    inputElement.addEventListener("change", (e) => {
-      if (inputElement.files.length) {
-        updateThumbnail(dropZoneElement, inputElement.files[0]);
-      }
-    });
-  
-    dropZoneElement.addEventListener("dragover", (e) => {
-      e.preventDefault();
-      dropZoneElement.classList.add("drop-zone--over");
-    });
-  
-    ["dragleave", "dragend"].forEach((type) => {
-      dropZoneElement.addEventListener(type, (e) => {
-        dropZoneElement.classList.remove("drop-zone--over");
-      });
-    });
-  
-    dropZoneElement.addEventListener("drop", (e) => {
-      e.preventDefault();
-  
-      if (e.dataTransfer.files.length) {
-        inputElement.files = e.dataTransfer.files;
-        updateThumbnail(dropZoneElement, e.dataTransfer.files[0]);
-      }
-  
-      dropZoneElement.classList.remove("drop-zone--over");
-    });
-  });
-  
-  /**
-   * Updates the thumbnail on a drop zone element.
-   *
-   * @param {HTMLElement} dropZoneElement
-   * @param {File} file
-   */
-  function updateThumbnail(dropZoneElement, file) {
-    let thumbnailElement = dropZoneElement.querySelector(".drop-zone__thumb");
-  
-    // First time - remove the prompt
-    if (dropZoneElement.querySelector(".drop-zone__prompt")) {
-      dropZoneElement.querySelector(".drop-zone__prompt").remove();
-    }
-  
-    // First time - there is no thumbnail element, so lets create it
-    if (!thumbnailElement) {
-      thumbnailElement = document.createElement("div");
-      thumbnailElement.classList.add("drop-zone__thumb");
-      dropZoneElement.appendChild(thumbnailElement);
-    }
-  
-    thumbnailElement.dataset.label = file.name;
-  
-    // Show thumbnail for image files
-    if (file.type.startsWith("image/")) {
-      const reader = new FileReader();
-  
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        thumbnailElement.style.backgroundImage = `url('${reader.result}')`;
-      };
-    } else {
-      thumbnailElement.style.backgroundImage = null;
-    }
-  }
-  </script>
+</script>
 

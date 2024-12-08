@@ -15,13 +15,14 @@ class Challenge extends Model
         'challenge_date',
         'total_participants',
         'amount',
-        'social_links',
+        'social_media_link',
         'description',
         'rules',
         'encouragement',
         'photo_path',
         'video_path',
         'user_id',
+        'charity_id'
     ];
     protected $casts = [
         'challenge_date' => 'datetime',

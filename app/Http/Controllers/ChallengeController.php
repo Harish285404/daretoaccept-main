@@ -7,6 +7,7 @@ use App\Models\Charity;
 use App\Http\Requests\StoreChallengeRequest;
 use App\Http\Requests\UpdateChallengeRequest;
 use Auth;
+use Carbon\Carbon;
 class ChallengeController extends Controller
 {
     /**
@@ -14,15 +15,47 @@ class ChallengeController extends Controller
      */
     public function index()
     {
-        $challenges = Challenge::where('user_id', auth()->id())->get(); 
+        $challenges = Challenge::where('user_id', auth()->id())->get();
         return view('Dashboard.User.MyChallenge.MyChallenges', compact('challenges'));
     }
 
+    public function showAll() {
+        
+        $today = Carbon::now();
+        $userId = Auth::id(); 
+        $upcomingChallenges = Challenge::where('user_id', '!=', $userId)
+                                        ->where('challenge_date', '>', $today)
+                                        ->get();
 
-    public function showAll(){
-        $challenges =Challenge::all();
-        return view('Dashboard.User.MyChallenge.Index',compact('challenges'));
+        $completedChallenges = Challenge::where('user_id', '!=', $userId)
+                                         ->where('challenge_date', '<=', $today)
+                                         ->get();
+    
+        return view('Dashboard.User.MyChallenge.Index', compact('upcomingChallenges', 'completedChallenges'));
     }
+
+        public function showList(){
+            $challenges = Challenge::where('user_id', auth()->id())->get(); 
+            return view('Dashboard.User.MyChallenge.list',compact('challenges'));
+
+        }
+
+        public function showDetail($id){
+            if(Auth::user()){
+                $challengeId = decrypt($id);
+                $myDetail = Challenge::findOrFail($challengeId);
+                // $myDetail = Challenge::where('id',$id)->get(); 
+                return view('Dashboard.User.MyChallenge.view-detail',compact('myDetail'));
+            }
+            
+
+        }
+
+        // public function showShareDetail($id){
+        //     $myDetail = Challenge::where('id',$id)->get(); 
+        //     return view('Dashboard.User.MyChallenge.view-detail',compact('myDetail'));
+
+        // }
 
     /**
      * Show the form for creating a new resource.
@@ -38,6 +71,7 @@ class ChallengeController extends Controller
      */
     public function store(StoreChallengeRequest $request)
         {
+
             $validated = $request->validate([
                 'title' => 'required|string|max:100',
                 'start_date' => 'required|date',
@@ -51,16 +85,24 @@ class ChallengeController extends Controller
                 'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240', 
                 'video' => 'nullable|mimes:mp4,mov|max:102400',
                 ]);
+                
                 $imageName = null;
+                $videoName = null;
 
                 if ($request->hasFile('photo')) {
-                    if ($challenge->photo) {
-                        Storage::delete('public/' . $challenge->photo);
-                    }
+
                     $image = $request->file('photo');
                     $imageName = time() . '.' . $image->getClientOriginalExtension();
                     $image->storeAs('challanges/images', $imageName, 'public');
+                    
                 }
+
+                if ($request->hasFile('videos')) {
+                    $video = $request->file('videos');
+                    $videoName = time() . '.' . $video->getClientOriginalExtension();
+                    $image->storeAs('challanges/images', $videoName, 'public');
+                }
+
                 
                 Challenge::create([
                     'title' => $request->title,
@@ -73,7 +115,8 @@ class ChallengeController extends Controller
                     'rules' => $request->rules,
                     'charity_id' => $request->charity_id,
                     'user_id' => Auth::user()->id,
-                    'photo' => $imageName,
+                    'photo_path' => $imageName,
+                    'video_path' => $videoName,
                 ]);
                 
 
@@ -95,7 +138,7 @@ class ChallengeController extends Controller
      */
     public function update(UpdateChallengeRequest $request, Challenge $challenge, $id)
 {
-
+// dd($request->all());
     $validated = $request->validate([
         'title' => 'required|string|max:100',
         'start_date' => 'required|date',
@@ -103,7 +146,7 @@ class ChallengeController extends Controller
         'total_participants' => 'required|integer|min:1',
         'amount' => 'required|numeric|min:0',
         'description' => 'required|string',
-        'social_links' => 'required|url',
+        'social_links' => 'required',
         'encouragement' => 'required|string',
         'rules' => 'required|string',
         'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240', 
@@ -112,13 +155,21 @@ class ChallengeController extends Controller
         $challenge = Challenge::findOrFail($id);
     
         if ($request->hasFile('photo')) {
-        if ($challenge->photo) {
-            Storage::delete('public/' . $challenge->photo);
-        }
-        $image = $request->file('image');
+        $image = $request->file('photo');
         $imageName = time() . '.' . $image->getClientOriginalExtension();
         $image->storeAs('challanges/images', $imageName, 'public'); 
        }
+
+
+        if ($request->hasFile('videos')) {
+            $video = $request->file('videos');
+            $videoName = time() . '.' . $video->getClientOriginalExtension();
+            $image->storeAs('challanges/images', $videoName, 'public');
+        }
+
+
+
+
 
     $challenge->update([
         'title' => $request->title,
@@ -131,7 +182,8 @@ class ChallengeController extends Controller
         'rules' => $request->rules,
         'charity_id' => $request->charity_id ?? $challenge->charity_id, 
         'user_id' => Auth::user()->id, 
-        'photo' => $imageName ?? $challenge->photo,  
+        'photo_path' => $imageName,
+        'video_path' => $videoName,  
     ]);
 
     return redirect()->route('challenge.index')->with('success', 'Challenge updated successfully!');

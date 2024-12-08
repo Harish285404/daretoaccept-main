@@ -23,11 +23,11 @@
     <div class="events-stream">
         <div class="title d-flex justify-content-between align-items-center">
             <h3>Events</h3>
-            <a>View All</a>
+            <a href="{{route('challanges.all.list')}}">View All</a>
         </div>
         <div class="events-stream-listing">
     @if(isset($challenge) && !empty($challenge))
-        @foreach($challenge as $event)
+        @foreach($challenge->take(3) as $event)
             <div class="events-stream-wrap">
                 <figure>
                     <img src="{{ url('asset/image.png') }}" alt="">
@@ -37,8 +37,8 @@
                     <p>{{ $event->description }}</p>
                     <div class="btns">
                         <a class="ac-btn-blue">Watch Live</a>
-                        <a class="ac-btn-blue-border">View Details</a>
-                    </div>
+                        <a href="{{ route('challange.detail', ['id' => encrypt($event->id)]) }}" class="ac-btn-blue-border">View Details</a>
+                        </div>
                 </div>
             </div>
         @endforeach
