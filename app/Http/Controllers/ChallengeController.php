@@ -88,7 +88,6 @@ class ChallengeController extends Controller
                 
                 $imageName = null;
                 $videoName = null;
-
                 if ($request->hasFile('photo')) {
 
                     $image = $request->file('photo');

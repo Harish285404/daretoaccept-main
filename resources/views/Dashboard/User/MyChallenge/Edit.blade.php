@@ -182,90 +182,58 @@
 });
 </script>
 
-
-<!-- Include jQuery library -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
     $(document).ready(function() {
-        // Handle form submission
         $('#createchalange').submit(function(e) {
-            e.preventDefault();  // Prevent form from submitting until validation is passed
-
-            // Clear previous error messages
+            e.preventDefault();  
             $('.error').text('');
             $('.form-field input, .form-field select, .form-field textarea').removeClass('is-invalid');
 
             let isValid = true;
-
-            // Validate Challenge Title
             const title = $('#name').val();
             if (title.trim() === '') {
                 $('#name-error').text('Challenge Title is required');
                 $('#name').addClass('is-invalid');
                 isValid = false;
             }
-
-            // Validate Start Date
             const startDate = $('#startdate').val();
             if (startDate === '') {
                 $('#startdate-error').text('Start Date is required');
                 $('#startdate').addClass('is-invalid');
                 isValid = false;
             }
-
-            // Validate Start Time
             const startTime = $('#starttime').val();
             if (startTime === '') {
                 $('#starttime-error').text('Start Time is required');
                 $('#starttime').addClass('is-invalid');
                 isValid = false;
             }
-
-            // Validate Total Participants (ensure it's a positive number)
             const totalParticipants = $('#participant').val();
             if (totalParticipants <= 0) {
                 $('#participant-error').text('Please enter a valid number of participants');
                 $('#participant').addClass('is-invalid');
                 isValid = false;
             }
-
-            // Validate Amount (ensure it's a number and greater than 0)
             const amount = $('#amount').val();
             if (amount.trim() === '' || isNaN(amount) || parseFloat(amount) <= 0) {
                 $('#amount-error').text('Please enter a valid amount');
                 $('#amount').addClass('is-invalid');
                 isValid = false;
             }
-
-            // Validate Charity Select (ensure a value is selected)
             const charity = $('#charity').val();
             if (charity === '') {
                 $('#charity-error').text('Please select a charity');
                 $('#charity').addClass('is-invalid');
                 isValid = false;
             }
-
-       
-        //  // Validate Social Links (ensure it's a valid URL)
-        //     const socialLinks = $('#socials').val();
-        //     if (socialLinks && !/^https?:\/\/[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*(?::\d+)?(?:\/[^\s]*)?$/.test(socialLinks)) {
-        //         $('#sociasl-error').text('Please enter a valid URL (e.g., http://example.com)');
-        //         $('#socials').addClass('is-invalid');
-        //         isValid = false;
-        //     }
-
-   
-            // Validate Social Links (ensure it's a valid URL)
             const socialLinks = $('#social').val().trim();
-
-            // Check if social link is not empty
             if (socialLinks === '') {
                 $('#social-errors').text('Social link is required');
                 $('#social').addClass('is-invalid');
                 isValid = false;
             } else {
-                // Pattern for validating URL (http:// or https://)
                 const urlPattern = /^(https?:\/\/)?([a-z0-9-]+\.)+[a-z0-9]{2,6}(\/[^\s]*)?$/;
 
                 if (!urlPattern.test(socialLinks)) {
@@ -274,8 +242,6 @@
                     isValid = false;
                 }
             }
-
-            // Validate Description
             const description = $('#description').val();
             if (description.trim() === '') {
                 $('#description-error').text('Description is required');
@@ -283,25 +249,20 @@
                 isValid = false;
             }
 
-            // Validate Rules & Regulations
             const rules = $('#rule').val();
             if (rules.trim() === '') {
                 $('#rule-error').text('Rules & Regulations are required');
                 $('#rule').addClass('is-invalid');
                 isValid = false;
             }
-
-            // Validate Encouragement
             const encouragement = $('#encourage').val();
             if (encouragement.trim() === '') {
                 $('#encourage-error').text('Encouragement is required');
                 $('#encourage').addClass('is-invalid');
                 isValid = false;
             }
-
-            // If all fields are valid, submit the form
             if (isValid) {
-                this.submit();  // Submit the form
+                this.submit();
             }
         });
     });

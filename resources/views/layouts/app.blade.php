@@ -21,5 +21,7 @@
     <script src="{{url('js/jquery-3.7.1.min.js')}}"></script>
     <script src="{{url('js/owl.carousel.min.js')}}"></script>
     <script src="{{url('js/custom.js')}}"></script>
+
+  
 </body>
 </html>
